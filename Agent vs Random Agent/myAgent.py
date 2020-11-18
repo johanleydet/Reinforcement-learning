@@ -22,7 +22,7 @@ class RandomAgent(object):
     def fit(self, epsilon=.0001, gamma=.99):
         PI0=np.random.randint(self.nbAction,size=11)
         PI=[] # initialisation de PI
-        # ici PI est une liste dans laquelle on stockera PI0 PI1 ... PIk 
+        
         
         PI.append(PI0)
         k=0
@@ -32,7 +32,7 @@ class RandomAgent(object):
         while(B): 
             V0=np.random.randint(self.nbAction,size=11)
             V=[] # initialisation de V
-            # ici V est une liste ou l'on stockera V0 V1 ... Vk 
+            
             
             V.append(V0)
             
@@ -40,29 +40,22 @@ class RandomAgent(object):
             
             b=True
             while(b):
-            # équivalent d'une boucle faire tant que.. la condition est la fin   
+              
                 
                 Vi=np.zeros(11) # un vecteur temporaire qui récoltera les Vi(s)
             
                 # pour tout état s faire
                 for state in self.P :
-                # attention ici on prend self.P.keys() et non pas self.state 
-                # car les pb nulles ne sont pas codé ie par la suite lorsque 
-                # l'on utilisera self.P[state] il y aura une erreur
                     
                     # state la matrice représentant l'état et s sont numéro
                     s=self.states[state] 
                     action=PI[k][s] # nous donne l'action à réaliser
-                    # attention même si la politique est déterministe 
-                    # l'algo ne l'est pas car on ajoute du bruit pour l'exploration
-                    # d'où la proba qui suivra dans la somme
+                   
                     
                     
                     sigma1=0
                     if action in self.P[state] : 
-                    # encore une fois les proba nulles
-                    # ne sont pas codées, s'il on elève la condition if 
-                    # self.P[state][action] créera une erreur en cas de pb nulle 
+                    
                         
                         # c'est le premier sigma de l'algorithme
                         for pb, destination, reward, done in self.P[state][action] :
