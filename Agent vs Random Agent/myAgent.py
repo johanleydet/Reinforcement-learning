@@ -33,7 +33,6 @@ class RandomAgent(object):
             V0=np.random.randint(self.nbAction,size=11)
             V=[] # initialisation de V
             
-            
             V.append(V0)
             
             i=0
@@ -41,7 +40,6 @@ class RandomAgent(object):
             b=True
             while(b):
               
-                
                 Vi=np.zeros(11) # un vecteur temporaire qui récoltera les Vi(s)
             
                 # pour tout état s faire
@@ -51,12 +49,9 @@ class RandomAgent(object):
                     s=self.states[state] 
                     action=PI[k][s] # nous donne l'action à réaliser
                    
-                    
-                    
                     sigma1=0
                     if action in self.P[state] : 
                     
-                        
                         # c'est le premier sigma de l'algorithme
                         for pb, destination, reward, done in self.P[state][action] :
                             sigma1+=pb*(reward+gamma*V[i][self.states[destination]])
